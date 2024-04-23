@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <title>Welcome</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+  <p><%= status %></p>
+  <form action="/reset" method="post">
+    <center>
+      <h1 class="title">Reset my Password</h1>
+    <br />
+    <label for="email" class="para">Email : </label>
+    <input type="text" name="email" id="email"><br /><br />
+    <button type="submit" class="button">Proceed to Security Questions</button>
+    <br>
+    <a href="/login">Back to login</a>
+  </center>
+  </form>
+</body>
+
+</html>

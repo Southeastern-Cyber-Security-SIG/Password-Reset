@@ -54,6 +54,12 @@ function seed() {
       console.log("Caz's User Created");
     });
 
+    var sql = "INSERT IGNORE INTO users (email, name, authToken, question, password) VALUES ('player@cssig.selu.edu', 'Player One', 'ymlktcjyGoe', 'You cannot use this method to recover this account', 'P@33word');";
+    con.query(sql, function (err) {
+      if (err) throw err;
+      console.log("Players's User Created");
+    });
+
   });
   console.log("Done Seeding")
 }

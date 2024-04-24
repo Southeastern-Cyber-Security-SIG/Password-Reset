@@ -42,7 +42,7 @@ function seed() {
       console.log("Shanna's User Created");
     });
 
-    var sql = "INSERT IGNORE INTO users (email, name, authToken, question, answer, flag) VALUES ('patrick@cssig.selu.edu', 'Patrick Theroit', 'KeDdBnYiKlLo', 'Whats your mothers maiden name?', 'Smith', 'selu{M0ms_@re_Th3_Besst!}');";
+    var sql = "INSERT IGNORE INTO users (email, name, authToken, question, answer, flag) VALUES ('patrick@cssig.selu.edu', 'Patrick Theroit', 'KeDdBnYiKlLo', 'What is your favorite hobby?', 'Lockpicking', 'selu{7h15_m@n_p1ck5_L0ck5}');";
     con.query(sql, function (err) {
       if (err) throw err;
       console.log("Patrick's User Created");
@@ -54,7 +54,7 @@ function seed() {
       console.log("Caz's User Created");
     });
 
-    var sql = "INSERT IGNORE INTO users (email, name, authToken, question, password) VALUES ('player@cssig.selu.edu', 'Player One', 'ymlktcjyGoe', 'You cannot use this method to recover this account', 'P@33word');";
+    var sql = "INSERT IGNORE INTO users (email, name, authToken, question, password) VALUES ('player@cssig.selu.edu', 'Player One', 'ymlktcjyGoe', 'You cannot use this method to recover this account', 'Pa33word');";
     con.query(sql, function (err) {
       if (err) throw err;
       console.log("Players's User Created");
@@ -115,4 +115,21 @@ async function resetPassword(email, answer, password) {
   });
 }
 
-module.exports = { seed, getQuestion, checkQuestion, resetPassword };
+async function attemptLogin(email, password) {
+  return await new Promise((resolve, reject) => {
+    con.connect(function (err) {
+      if (err) throw err;
+      console.log("Connected!");
+
+      var sql = "SELECT authToken FROM users WHERE email = '" + email + "' AND password = '"+ password+"';";
+      con.query(sql, async function (err, result, fields) {
+        if (err) reject(err);
+        console.log(sql)
+        console.log(result);
+        resolve(result)
+      });
+    })
+  });
+}
+
+module.exports = { seed, getQuestion, checkQuestion, resetPassword, attemptLogin };

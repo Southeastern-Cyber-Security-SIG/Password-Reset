@@ -48,7 +48,7 @@ function seed() {
       console.log("Patrick's User Created");
     });
 
-    var sql = "INSERT IGNORE INTO users (email, name, authToken, question, answer, flag) VALUES ('caz@cssig.selu.edu', 'Caz Cheramie', 'ymlPTGDWyGoe', 'Whats your mothers maiden name?', 'Smith', 'selu{M0ms_@re_Th3_Besst!}');";
+    var sql = "INSERT IGNORE INTO users (email, name, authToken, question, answer, flag) VALUES ('caz@cssig.selu.edu', 'Caz Cheramie', 'ymlPTGDWyGoe', 'what was the name of your first pet?', 'Duke', 'selu{9y41_DuK3_W4s_H1s_N4m3}');";
     con.query(sql, function (err) {
       if (err) throw err;
       console.log("Caz's User Created");

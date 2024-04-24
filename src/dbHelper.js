@@ -138,7 +138,7 @@ async function getIdentity(authToken) {
       if (err) throw err;
       console.log("Connected!");
 
-      var sql = "SELECT name, email FROM users WHERE authToken = '" + authToken +"';";
+      var sql = "SELECT name, email, flag FROM users WHERE authToken = '" + authToken +"';";
       con.query(sql, async function (err, result, fields) {
         if (err) reject(err);
         console.log(sql)

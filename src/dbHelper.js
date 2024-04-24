@@ -132,4 +132,39 @@ async function attemptLogin(email, password) {
   });
 }
 
-module.exports = { seed, getQuestion, checkQuestion, resetPassword, attemptLogin };
+async function getIdentity(authToken) {
+  return await new Promise((resolve, reject) => {
+    con.connect(function (err) {
+      if (err) throw err;
+      console.log("Connected!");
+
+      var sql = "SELECT name, email FROM users WHERE authToken = '" + authToken +"';";
+      con.query(sql, async function (err, result, fields) {
+        if (err) reject(err);
+        console.log(sql)
+        console.log(result);
+        resolve(result)
+      });
+    })
+  });
+}
+
+async function getAllUsers(authToken) {
+  return await new Promise((resolve, reject) => {
+    con.connect(function (err) {
+      if (err) throw err;
+      console.log("Connected!");
+
+      var sql = "SELECT name, email FROM users;";
+      con.query(sql, async function (err, result, fields) {
+        if (err) reject(err);
+        console.log(sql)
+        console.log(result);
+        resolve(result)
+      });
+    })
+  });
+}
+
+
+module.exports = { seed, getQuestion, checkQuestion, resetPassword, attemptLogin, getIdentity, getAllUsers};

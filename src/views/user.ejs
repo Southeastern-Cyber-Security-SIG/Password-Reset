@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <head>
+        <title>Welcome</title>
+        <link rel="stylesheet" href="/stylesheets/style.css">
+    </head>
+
+<body>
+
+    <center>
+        <h1>Welcome <%= name %>, to the Employee Directory
+        </h1>
+        <h3>
+            <%= flag %>
+        </h3>
+        <Table>
+            <tr><th>Name</th><th>Email</th></tr>
+            <% users.forEach((user) => { %>
+            <tr>
+                <td>
+                    <%= user.name %>
+                </td>
+                <td>
+                    <%= user.email %>
+                </td>
+            </tr>
+            
+            <% }); 
+        %>
+        </Table>
+        
+        <a href="/logout">Logout</a>
+    </center>
+
+</body>
+
+</html>
